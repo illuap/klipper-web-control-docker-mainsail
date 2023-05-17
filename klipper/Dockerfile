@@ -152,3 +152,5 @@ COPY --chown=${USER}:${USER} klipper/run_in_venv /usr/local/bin/run_in_venv
 COPY klipper/supervisord.conf /etc/supervisord/conf.d/supervisord.conf
 COPY klipper/*.ini /etc/supervisord/
 CMD ["supervisord", "-c", "/etc/supervisord/conf.d/supervisord.conf"]
+
+RUN chmod 666 /dev/ttyUSB0
