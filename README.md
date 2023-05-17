@@ -4,6 +4,7 @@
 - [klipper-web-control-docker](#klipper-web-control-docker)
   - [Features](#features)
   - [Getting started](#getting-started)
+    - [Windows Pre-requisite](#windows-pre-requisite)
     - [Install the services](#install-the-services)
     - [If things are running fine now...](#if-things-are-running-fine-now)
     - [If things are not running...](#if-things-are-not-running)
@@ -69,6 +70,20 @@ ___Prerequisites:___
 - _You have flashed your printer with the appropriate .bin_
 - _You have your printer connected to your machine and you know it's serial mount point (e.g. /dev/ttyACM0 or /dev/ttyUSB0)_
 - _ARM32v6 (Raspberry Pi Zero and 1) requires [Docker 20](https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script). Fluidd is not yet supported_
+
+### Windows Pre-requisite
+
+Bound windows usb COM port to WSL2
+https://stackoverflow.com/questions/69467148/acces-windows-com-port-from-dockerlinux-container
+1. ```usbipd wsl list```
+2. example: ```usbipd wsl attach --busid=<BUSID> --distribution=Ubuntu-20.04```
+
+klipper needs extra permissions to access the usb port, this was already added to the docker file to run chmod 666 for /dev/ttyUSB0
+
+TODO: 
+- automate port mounting if possible...
+- fix printer name
+- allow network access to mainsail.local
 
 ### Install the services
 
